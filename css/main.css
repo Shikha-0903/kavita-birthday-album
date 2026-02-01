@@ -21,16 +21,16 @@
   --font-body: 'Poppins', sans-serif;
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;
-  --spacing-md: 2rem;
-  --spacing-lg: 4rem;
-  --spacing-xl: 6rem;
-  --transition-fast: 0.2s ease;
-  --transition-normal: 0.3s ease;
-  --transition-slow: 0.5s ease;
-  --radius-sm: 8px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
-  --radius-xl: 32px;
+  --spacing-md: 1.25rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 30px;
+  --radius-xl: 40px;
 }
 
 * {
@@ -245,7 +245,7 @@ body {
 /* Introduction Chapter Styles */
 .intro-chapter {
   position: relative;
-  padding: var(--spacing-xl) var(--spacing-md);
+  padding: var(--spacing-lg) var(--spacing-md);
   background: linear-gradient(180deg, var(--color-darker) 0%, #1e1e3f 100%);
   z-index: 1;
 }
@@ -377,86 +377,131 @@ body {
   .story-container {
     grid-template-columns: 1fr;
   }
+
+  .train-track {
+    left: 20px;
+    transform: none;
+  }
+
+  .train {
+    left: 20px;
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
 }
 
 .journey-section {
   position: relative;
   min-height: 200vh;
-  padding: var(--spacing-xl) var(--spacing-md);
-  background: linear-gradient(180deg, var(--color-darker) 0%, #16213e 50%, var(--color-darker) 100%);
+  padding: var(--spacing-xl) 20px;
+  background: linear-gradient(180deg, var(--color-darker) 0%, #1a1a2e 50%, var(--color-darker) 100%);
+  display: flex;
+  justify-content: flex-start;
 }
 
 .train-track {
-  position: sticky;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 100%;
-  height: 100px;
-  z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 20px;
+  width: 40px;
+  height: 100%;
+  z-index: 1;
   pointer-events: none;
 }
 
 .train-track .track-line {
   position: absolute;
-  top: 50%;
-  left: 0;
+  top: 0;
+  left: 50%;
   width: 100%;
-  height: 4px;
-  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.2) 20%, rgba(255, 255, 255, 0.2) 80%, transparent 100%);
+  height: 100%;
+  transform: translateX(-50%);
 }
 
+/* Metallic Rails */
 .train-track .track-line::before,
 .train-track .track-line::after {
   content: "";
   position: absolute;
-  width: 100%;
-  height: 2px;
-  background: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0px, rgba(255, 255, 255, 0.1) 20px, transparent 20px, transparent 40px);
+  height: 100%;
+  width: 6px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2));
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
 }
 
 .train-track .track-line::before {
-  top: -10px;
+  left: 0;
 }
 
 .train-track .track-line::after {
-  bottom: -10px;
+  right: 0;
+}
+
+/* Vertical Sleepers */
+.train-track::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(180deg,
+      transparent 0px,
+      transparent 50px,
+      rgba(255, 255, 255, 0.1) 50px,
+      rgba(255, 255, 255, 0.1) 60px);
+  z-index: -1;
 }
 
 .train {
   position: absolute;
-  top: 50%;
-  left: 0%;
-  transform: translate(-50%, -50%);
-  font-size: 3rem;
-  transition: left 0.3s ease-out;
-  filter: drop-shadow(0 0 20px rgba(255, 107, 157, 0.5));
+  top: 0;
+  left: 20px;
+  width: 40px;
+  height: 40px;
+  transform: translate(0, -50%);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: top 0.1s linear;
 }
 
-.train .train-body {
-  animation: trainShake 0.3s ease-in-out infinite;
+.train-carriage {
+  width: 30px;
+  height: 30px;
+  background: #ff6b9d;
+  border-radius: 50%;
+  box-shadow: 0 0 20px #ff6b9d, 0 0 40px #ff6b9d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
 }
 
-.train .train-smoke {
+.train-emoji {
   position: absolute;
-  top: -20px;
-  left: -30px;
-  font-size: 1.5rem;
-  animation: smokeFloat 2s ease-in-out infinite;
-  opacity: 0.7;
+  right: -55px;
+  font-size: 3.5rem;
+  transform: rotate(90deg);
+  filter: drop-shadow(0 0 15px rgba(255, 107, 157, 0.8));
 }
+
+
+
+
 
 .stations-container {
   position: relative;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: var(--spacing-xl) 0;
+  max-width: 600px;
+  padding: var(--spacing-xl) 20px var(--spacing-xl) 80px;
 }
 
 .memory-station {
   position: relative;
-  margin: var(--spacing-xl) 0;
+  margin: var(--spacing-lg) 0;
   opacity: 0;
-  transform: translateY(50px);
+  transform: translateY(30px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
@@ -473,19 +518,19 @@ body {
 
 .station-marker {
   position: absolute;
-  left: 50%;
-  top: -60px;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 60px;
+  left: -40px;
+  top: 0;
+  transform: translate(-50%, 0);
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   background: var(--gradient-purple);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
-  box-shadow: 0 0 30px rgba(160, 108, 213, 0.6);
-  z-index: 5;
+  font-size: 1.8rem;
+  box-shadow: 0 0 20px rgba(160, 108, 213, 0.8);
+  z-index: 50;
   transition: all var(--transition-normal);
 }
 
@@ -538,6 +583,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 20%;
   transition: transform var(--transition-slow);
 }
 
