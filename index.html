@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A Journey Through Time - Happy Birthday Kavita! 🎂">
+    <meta name="author" content="Your Best Friend">
+    <title>Journey Through Time - Happy Birthday Kavita! 🎂</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
+</head>
+
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="train-loader">
+                <div class="train-engine">🚂</div>
+                <div class="smoke">💨</div>
+            </div>
+            <h2 class="loading-text">Preparing Your Journey...</h2>
+            <div class="loading-bar">
+                <div class="loading-progress" id="loadingProgress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container" id="mainContainer">
+        <!-- Hero Section -->
+        <header class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="title-line">Happy Birthday</span>
+                    <span class="title-name">Kavita! 🎂</span>
+                </h1>
+                <p class="hero-subtitle">A Journey Through Our Precious Memories</p>
+                <div class="scroll-indicator">
+                    <span>Scroll to begin your journey</span>
+                    <div class="scroll-arrow">↓</div>
+                </div>
+            </div>
+            <div class="hero-background">
+                <div class="stars"></div>
+                <div class="gradient-orb orb-1"></div>
+                <div class="gradient-orb orb-2"></div>
+                <div class="gradient-orb orb-3"></div>
+            </div>
+        </header>
+
+        <!-- Prologue: The Meeting -->
+        <section class="intro-chapter">
+            <div class="chapter-content">
+                <div class="chapter-header">
+                    <span class="chapter-number">Chapter 0</span>
+                    <h2 class="chapter-title">The First Meeting 🌸</h2>
+                    <p class="chapter-date">August 10, 2022 • 1st Day of Graduation</p>
+                </div>
+
+                <div class="story-container">
+                    <div class="story-image">
+                        <img src="images/first-meeting.jpg" alt="Our First Meeting">
+                    </div>
+                    <div class="story-text">
+                        <p>I still remember entering the classroom that morning. My heart was racing, a mix of
+                            excitement and nerves for the new journey ahead.</p>
+                        <p>Scanning the room, I saw her—sitting quietly in the 2nd last row. There was something so calm
+                            and welcoming about her space.</p>
+                        <p>I walked up, hesitated for a second, and then asked those simple words that changed
+                            everything: <strong>"Mai yaha baith sakti hu?"</strong></p>
+                        <p>Little did I know that asking her name would be the start of the most beautiful friendship of
+                            my life. ♾️💖</p>
+                    </div>
+                </div>
+
+                <div class="journey-divider">
+                    <span class="divider-text">The Journey Begins...</span>
+                    <div class="divider-line"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Journey Section -->
+        <section class="journey-section">
+            <!-- Train Track -->
+            <div class="train-track">
+                <div class="track-line"></div>
+                <div class="train" id="train">
+                    <div class="train-body">🚂</div>
+                    <div class="train-smoke">💨</div>
+                </div>
+            </div>
+
+            <!-- Memory Stations -->
+            <div class="stations-container" id="stationsContainer">
+                <!-- Stations will be dynamically generated -->
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p class="footer-message">Made with 💖 for the most amazing friend</p>
+                <p class="footer-date">February 2, 2026</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Memory Modal -->
+    <div class="memory-modal" id="memoryModal">
+        <div class="modal-overlay" id="modalOverlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">×</button>
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">Memory Title</h2>
+                <p class="modal-date" id="modalDate">Date</p>
+            </div>
+            <div class="modal-gallery">
+                <button class="gallery-nav gallery-prev" id="galleryPrev">‹</button>
+                <div class="gallery-container" id="galleryContainer">
+                    <img src="" alt="Memory" class="gallery-image" id="galleryImage">
+                </div>
+                <button class="gallery-nav gallery-next" id="galleryNext">›</button>
+            </div>
+            <div class="gallery-dots" id="galleryDots"></div>
+            <div class="modal-caption" id="modalCaption">
+                <p>Swipe or use arrows to view more photos</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/memories-config.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
