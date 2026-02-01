@@ -2,15 +2,15 @@
 // Firebase Configuration
 // ============================================
 
-// Firebase configuration - Updated with actual credentials
+// Firebase configuration - Using environment variables via Vite
 const firebaseConfig = {
-  apiKey: "AIzaSyDpJvI0RY_0dbqRgkNBo1m08CtoMQbXpV4",
-  authDomain: "artgallery-1e47c.firebaseapp.com",
-  projectId: "artgallery-1e47c",
-  storageBucket: "artgallery-1e47c.appspot.com",
-  messagingSenderId: "998264731262",
-  appId: "1:998264731262:web:92abb557972a40b3838a2f",
-  measurementId: "G-DVL16SGQXC"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
 // Initialize Firebase
