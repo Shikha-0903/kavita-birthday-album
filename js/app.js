@@ -205,10 +205,6 @@ class BirthdayAlbumApp {
         station.className = `memory-station ${memory.unlocked ? 'unlocked' : 'locked'}`;
         station.id = memory.id;
 
-        // Alternate left/right positioning
-        const isLeft = index % 2 === 0;
-        station.style.textAlign = isLeft ? 'left' : 'right';
-
         station.innerHTML = `
       <div class="station-marker">
         ${memory.emoji}
@@ -292,13 +288,8 @@ class BirthdayAlbumApp {
 // Initialize App on Load
 // ============================================
 
-window.addEventListener('DOMContentLoaded', () => {
-    const app = new BirthdayAlbumApp();
-    app.init();
-});
+window.app = new BirthdayAlbumApp();
 
-// Make app globally accessible for debugging
-window.app = null;
-window.addEventListener('load', () => {
-    window.app = new BirthdayAlbumApp();
+window.addEventListener('DOMContentLoaded', () => {
+    window.app.init();
 });

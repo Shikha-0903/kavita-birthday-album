@@ -54,13 +54,16 @@ class AnimationController {
 
         const sectionTop = journeySection.offsetTop;
         const sectionHeight = journeySection.offsetHeight;
-        const scrollInSection = this.scrollPosition - sectionTop + window.innerHeight / 2;
+        const viewportHeight = window.innerHeight;
 
-        // Calculate train position (0% to 100%)
-        const progress = Math.max(0, Math.min(1, scrollInSection / sectionHeight));
-        this.trainPosition = progress * 100;
+        // Calculate progress: 0 at the top of the section, 1 at the bottom
+        // Adjusting so the train starts moving when the section is in view
+        const startOffset = sectionTop - viewportHeight / 2;
+        const currentScroll = this.scrollPosition - startOffset;
 
-        train.style.left = `${this.trainPosition}%`;
+        const progress = Math.max(0, Math.min(100, (currentScroll / sectionHeight) * 100));
+
+        train.style.top = `${progress}%`;
     }
 
     /**
